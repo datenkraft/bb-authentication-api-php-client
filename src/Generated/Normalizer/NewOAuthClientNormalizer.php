@@ -45,9 +45,9 @@ class NewOAuthClientNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('secret', $data)) {
-            $object->setSecret($data['secret']);
-            unset($data['secret']);
+        if (\array_key_exists('identityId', $data)) {
+            $object->setIdentityId($data['identityId']);
+            unset($data['identityId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -63,7 +63,7 @@ class NewOAuthClientNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $data = array();
         $data['name'] = $object->getName();
-        $data['secret'] = $object->getSecret();
+        $data['identityId'] = $object->getIdentityId();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;
