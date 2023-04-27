@@ -10,6 +10,7 @@ class GetOAuthClientCollection extends \Datenkraft\Backbone\Client\Authenticatio
      * @param array $queryParameters {
      *     @var int $page The page to read. Default is the first page.
      *     @var int $pageSize The maximum size per page is 100. Default is 100.
+     *     @var string $filter[identityId] Filter for a specific identity id to get all OAuth clients to a specific identity.
      * }
      */
     public function __construct(array $queryParameters = array())
@@ -36,11 +37,12 @@ class GetOAuthClientCollection extends \Datenkraft\Backbone\Client\Authenticatio
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[identityId]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('filter[identityId]', array('string'));
         return $optionsResolver;
     }
     /**
