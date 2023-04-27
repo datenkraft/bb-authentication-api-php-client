@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model;
 
-class UpdateOAuthClient extends \ArrayObject
+class NewAuthRoleResource extends \ArrayObject
 {
     /**
      * @var array
@@ -13,28 +13,28 @@ class UpdateOAuthClient extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * The name to identify the client - Must not be changed for generated clients.
+     * Name
      *
-     * @var string|null
+     * @var string
      */
     protected $name;
     /**
-     * The name to identify the client - Must not be changed for generated clients.
+     * Name
      *
-     * @return string|null
+     * @return string
      */
-    public function getName() : ?string
+    public function getName() : string
     {
         return $this->name;
     }
     /**
-     * The name to identify the client - Must not be changed for generated clients.
+     * Name
      *
-     * @param string|null $name
+     * @param string $name
      *
      * @return self
      */
-    public function setName(?string $name) : self
+    public function setName(string $name) : self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
