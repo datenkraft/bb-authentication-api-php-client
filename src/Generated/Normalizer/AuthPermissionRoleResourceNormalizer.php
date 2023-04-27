@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class AuthPermissionRoleResourceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
+        return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\AuthPermissionRoleResource';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\AuthPermissionRoleResource';
     }
     /**
      * @return mixed
@@ -37,29 +37,17 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient();
+        $object = new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
+        if (\array_key_exists('permissionCode', $data)) {
+            $object->setPermissionCode($data['permissionCode']);
+            unset($data['permissionCode']);
         }
-        if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
-            unset($data['name']);
-        }
-        if (\array_key_exists('identityId', $data)) {
-            $object->setIdentityId($data['identityId']);
-            unset($data['identityId']);
-        }
-        if (\array_key_exists('secret', $data)) {
-            $object->setSecret($data['secret']);
-            unset($data['secret']);
-        }
-        if (\array_key_exists('revoked', $data)) {
-            $object->setRevoked($data['revoked']);
-            unset($data['revoked']);
+        if (\array_key_exists('roleCode', $data)) {
+            $object->setRoleCode($data['roleCode']);
+            unset($data['roleCode']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -74,13 +62,8 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['id'] = $object->getId();
-        $data['name'] = $object->getName();
-        $data['identityId'] = $object->getIdentityId();
-        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
-            $data['secret'] = $object->getSecret();
-        }
-        $data['revoked'] = $object->getRevoked();
+        $data['permissionCode'] = $object->getPermissionCode();
+        $data['roleCode'] = $object->getRoleCode();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;
