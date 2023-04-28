@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class AuditLogCollectionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
+        return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\AuditLogCollection';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\AuditLogCollection';
     }
     /**
      * @return mixed
@@ -37,33 +37,25 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient();
+        $object = new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuditLogCollection();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
+        if (\array_key_exists('pagination', $data)) {
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\CollectionPagination', 'json', $context));
+            unset($data['pagination']);
         }
-        if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
-            unset($data['name']);
+        if (\array_key_exists('data', $data)) {
+            $values = array();
+            foreach ($data['data'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\AuditLog', 'json', $context);
+            }
+            $object->setData($values);
+            unset($data['data']);
         }
-        if (\array_key_exists('identityId', $data)) {
-            $object->setIdentityId($data['identityId']);
-            unset($data['identityId']);
-        }
-        if (\array_key_exists('secret', $data)) {
-            $object->setSecret($data['secret']);
-            unset($data['secret']);
-        }
-        if (\array_key_exists('revoked', $data)) {
-            $object->setRevoked($data['revoked']);
-            unset($data['revoked']);
-        }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -74,16 +66,19 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['id'] = $object->getId();
-        $data['name'] = $object->getName();
-        $data['identityId'] = $object->getIdentityId();
-        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
-            $data['secret'] = $object->getSecret();
+        if ($object->isInitialized('pagination') && null !== $object->getPagination()) {
+            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
         }
-        $data['revoked'] = $object->getRevoked();
-        foreach ($object as $key => $value) {
+        if ($object->isInitialized('data') && null !== $object->getData()) {
+            $values = array();
+            foreach ($object->getData() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['data'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
         return $data;

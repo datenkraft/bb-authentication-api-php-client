@@ -15,7 +15,7 @@ class OAuthClient extends \ArrayObject
     /**
      * Client ID
      *
-     * @var mixed
+     * @var string
      */
     protected $id;
     /**
@@ -25,6 +25,18 @@ class OAuthClient extends \ArrayObject
      */
     protected $name;
     /**
+     * The Identity Id corresponding to the client
+     *
+     * @var string
+     */
+    protected $identityId;
+    /**
+     * Only shown once when posting a new client.
+     *
+     * @var string
+     */
+    protected $secret;
+    /**
      * Flag if the OAuth client is revoked
      *
      * @var bool
@@ -33,20 +45,20 @@ class OAuthClient extends \ArrayObject
     /**
      * Client ID
      *
-     * @return mixed
+     * @return string
      */
-    public function getId()
+    public function getId() : string
     {
         return $this->id;
     }
     /**
      * Client ID
      *
-     * @param mixed $id
+     * @param string $id
      *
      * @return self
      */
-    public function setId($id) : self
+    public function setId(string $id) : self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -72,6 +84,50 @@ class OAuthClient extends \ArrayObject
     {
         $this->initialized['name'] = true;
         $this->name = $name;
+        return $this;
+    }
+    /**
+     * The Identity Id corresponding to the client
+     *
+     * @return string
+     */
+    public function getIdentityId() : string
+    {
+        return $this->identityId;
+    }
+    /**
+     * The Identity Id corresponding to the client
+     *
+     * @param string $identityId
+     *
+     * @return self
+     */
+    public function setIdentityId(string $identityId) : self
+    {
+        $this->initialized['identityId'] = true;
+        $this->identityId = $identityId;
+        return $this;
+    }
+    /**
+     * Only shown once when posting a new client.
+     *
+     * @return string
+     */
+    public function getSecret() : string
+    {
+        return $this->secret;
+    }
+    /**
+     * Only shown once when posting a new client.
+     *
+     * @param string $secret
+     *
+     * @return self
+     */
+    public function setSecret(string $secret) : self
+    {
+        $this->initialized['secret'] = true;
+        $this->secret = $secret;
         return $this;
     }
     /**
