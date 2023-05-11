@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception;
 
-class GetAuthRoleCollectionNotFoundException extends NotFoundException
+class GetAuthPermissionRoleCollectionUnauthorizedException extends UnauthorizedException
 {
     /**
      * @var \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse
@@ -14,7 +14,7 @@ class GetAuthRoleCollectionNotFoundException extends NotFoundException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Not Found');
+        parent::__construct('Unauthorized');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
