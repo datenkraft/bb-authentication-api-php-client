@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint;
 class PostOAuthClient extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Add a new OAuth client. The created id may be used for creating a identity in bb-organization-structure-api
+     * Add a new OAuth client.
      *
      * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewOAuthClient $requestBody 
      */
