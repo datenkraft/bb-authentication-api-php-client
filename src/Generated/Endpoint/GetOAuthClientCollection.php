@@ -5,13 +5,17 @@ namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint;
 class GetOAuthClientCollection extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get a list of OAuth clients.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 100.
-     * }
-     */
+    * Get a list of OAuth clients.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[identityId] Filter for a specific identity id to get all OAuth clients to a specific identity.
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -36,11 +40,13 @@ class GetOAuthClientCollection extends \Datenkraft\Backbone\Client\Authenticatio
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[identityId]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('paginationMode', array('string'));
+        $optionsResolver->addAllowedTypes('filter[identityId]', array('string'));
         return $optionsResolver;
     }
     /**

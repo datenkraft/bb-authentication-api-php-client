@@ -18,11 +18,11 @@ class CollectionPaginationNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\CollectionPagination';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\CollectionPagination';
     }
@@ -49,6 +49,13 @@ class CollectionPaginationNormalizer implements DenormalizerInterface, Normalize
             $object->setPageSize($data['pageSize']);
             unset($data['pageSize']);
         }
+        if (\array_key_exists('totalCount', $data) && $data['totalCount'] !== null) {
+            $object->setTotalCount($data['totalCount']);
+            unset($data['totalCount']);
+        }
+        elseif (\array_key_exists('totalCount', $data) && $data['totalCount'] === null) {
+            $object->setTotalCount(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -67,6 +74,9 @@ class CollectionPaginationNormalizer implements DenormalizerInterface, Normalize
         }
         if ($object->isInitialized('pageSize') && null !== $object->getPageSize()) {
             $data['pageSize'] = $object->getPageSize();
+        }
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
+            $data['totalCount'] = $object->getTotalCount();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
