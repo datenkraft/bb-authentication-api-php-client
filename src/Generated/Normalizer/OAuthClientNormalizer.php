@@ -18,11 +18,11 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
     }
@@ -49,6 +49,14 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setName($data['name']);
             unset($data['name']);
         }
+        if (\array_key_exists('identityId', $data)) {
+            $object->setIdentityId($data['identityId']);
+            unset($data['identityId']);
+        }
+        if (\array_key_exists('secret', $data)) {
+            $object->setSecret($data['secret']);
+            unset($data['secret']);
+        }
         if (\array_key_exists('revoked', $data)) {
             $object->setRevoked($data['revoked']);
             unset($data['revoked']);
@@ -68,6 +76,10 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data = array();
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
+        $data['identityId'] = $object->getIdentityId();
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
+            $data['secret'] = $object->getSecret();
+        }
         $data['revoked'] = $object->getRevoked();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -18,11 +18,11 @@ class UpdateOAuthClientNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\UpdateOAuthClient';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\UpdateOAuthClient';
     }
@@ -48,20 +48,6 @@ class UpdateOAuthClientNormalizer implements DenormalizerInterface, NormalizerIn
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
-        if (\array_key_exists('secret', $data) && $data['secret'] !== null) {
-            $object->setSecret($data['secret']);
-            unset($data['secret']);
-        }
-        elseif (\array_key_exists('secret', $data) && $data['secret'] === null) {
-            $object->setSecret(null);
-        }
-        if (\array_key_exists('revoked', $data) && $data['revoked'] !== null) {
-            $object->setRevoked($data['revoked']);
-            unset($data['revoked']);
-        }
-        elseif (\array_key_exists('revoked', $data) && $data['revoked'] === null) {
-            $object->setRevoked(null);
-        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -77,12 +63,6 @@ class UpdateOAuthClientNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
-        }
-        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
-            $data['secret'] = $object->getSecret();
-        }
-        if ($object->isInitialized('revoked') && null !== $object->getRevoked()) {
-            $data['revoked'] = $object->getRevoked();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
