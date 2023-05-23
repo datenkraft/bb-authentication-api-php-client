@@ -15,13 +15,13 @@ class InformationResponse extends \ArrayObject
     /**
      * information
      *
-     * @var mixed[][]
+     * @var Information[]
      */
     protected $information;
     /**
      * information
      *
-     * @return mixed[][]
+     * @return Information[]
      */
     public function getInformation() : array
     {
@@ -30,7 +30,7 @@ class InformationResponse extends \ArrayObject
     /**
      * information
      *
-     * @param mixed[][] $information
+     * @param Information[] $information
      *
      * @return self
      */
