@@ -19,14 +19,11 @@ class NewOAuthClient extends \ArrayObject
      */
     protected $name;
     /**
-    * At least 32 char length, mandatory usage of at least one upper and lower case letter,
-    as well as numbers and special characters.
-    
-    Make a note of this secret and keep it carefully, it cannot be retrieved again!
-    *
-    * @var string
-    */
-    protected $secret;
+     * The Identity Id corresponding to the client
+     *
+     * @var string
+     */
+    protected $identityId;
     /**
      * The name to identify the client
      *
@@ -50,31 +47,25 @@ class NewOAuthClient extends \ArrayObject
         return $this;
     }
     /**
-    * At least 32 char length, mandatory usage of at least one upper and lower case letter,
-    as well as numbers and special characters.
-    
-    Make a note of this secret and keep it carefully, it cannot be retrieved again!
-    *
-    * @return string
-    */
-    public function getSecret() : string
+     * The Identity Id corresponding to the client
+     *
+     * @return string
+     */
+    public function getIdentityId() : string
     {
-        return $this->secret;
+        return $this->identityId;
     }
     /**
-    * At least 32 char length, mandatory usage of at least one upper and lower case letter,
-    as well as numbers and special characters.
-    
-    Make a note of this secret and keep it carefully, it cannot be retrieved again!
-    *
-    * @param string $secret
-    *
-    * @return self
-    */
-    public function setSecret(string $secret) : self
+     * The Identity Id corresponding to the client
+     *
+     * @param string $identityId
+     *
+     * @return self
+     */
+    public function setIdentityId(string $identityId) : self
     {
-        $this->initialized['secret'] = true;
-        $this->secret = $secret;
+        $this->initialized['identityId'] = true;
+        $this->identityId = $identityId;
         return $this;
     }
 }
