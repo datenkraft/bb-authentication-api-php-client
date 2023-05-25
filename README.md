@@ -43,7 +43,7 @@ require 'path/to/vendor/autoload.php';
 
 ## Using the library
 
-The library can be used to communicate with the Authentication Resource Server.
+The library can be used to communicate with the Authentication Server.
 The Client includes functionalities for every endpoint defined in the openapi.json.
 The Client also is auto generated with jane-php using an openapi.json file.
 
