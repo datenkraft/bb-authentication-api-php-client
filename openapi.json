@@ -1502,7 +1502,7 @@
                     {
                         "name": "pageSize",
                         "in": "query",
-                        "description": "The maximum size per page is 100. Default is 20.",
+                        "description": "The maximum size per page is 100. Default is 100.",
                         "required": false,
                         "schema": {
                             "type": "integer"
@@ -1723,6 +1723,16 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
                     "401": {
                         "description": "Unauthorized",
                         "content": {
@@ -1745,16 +1755,6 @@
                     },
                     "404": {
                         "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Entity",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2030,13 +2030,13 @@
             "OAuthClient": {
                 "description": "Data to represent an OAuth client",
                 "required": [
-                    "id",
+                    "clientId",
                     "name",
                     "identityId",
                     "revoked"
                 ],
                 "properties": {
-                    "id": {
+                    "clientId": {
                         "description": "Client ID",
                         "type": "string"
                     },

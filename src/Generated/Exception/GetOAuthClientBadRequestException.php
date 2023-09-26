@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception;
 
-class GetOAuthClientUnprocessableEntityException extends UnprocessableEntityException
+class GetOAuthClientBadRequestException extends BadRequestException
 {
     /**
      * @var \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse
@@ -14,7 +14,7 @@ class GetOAuthClientUnprocessableEntityException extends UnprocessableEntityExce
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Unprocessable Entity');
+        parent::__construct('Bad Request');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

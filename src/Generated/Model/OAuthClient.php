@@ -17,7 +17,7 @@ class OAuthClient extends \ArrayObject
      *
      * @var string
      */
-    protected $id;
+    protected $clientId;
     /**
      * The name to identify the client
      *
@@ -47,21 +47,21 @@ class OAuthClient extends \ArrayObject
      *
      * @return string
      */
-    public function getId() : string
+    public function getClientId() : string
     {
-        return $this->id;
+        return $this->clientId;
     }
     /**
      * Client ID
      *
-     * @param string $id
+     * @param string $clientId
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setClientId(string $clientId) : self
     {
-        $this->initialized['id'] = true;
-        $this->id = $id;
+        $this->initialized['clientId'] = true;
+        $this->clientId = $clientId;
         return $this;
     }
     /**
