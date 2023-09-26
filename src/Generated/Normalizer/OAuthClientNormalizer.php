@@ -41,9 +41,9 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
+        if (\array_key_exists('clientId', $data)) {
+            $object->setClientId($data['clientId']);
+            unset($data['clientId']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -74,7 +74,7 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['id'] = $object->getId();
+        $data['clientId'] = $object->getClientId();
         $data['name'] = $object->getName();
         $data['identityId'] = $object->getIdentityId();
         if ($object->isInitialized('secret') && null !== $object->getSecret()) {
