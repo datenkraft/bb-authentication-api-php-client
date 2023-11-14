@@ -1374,6 +1374,84 @@
                 ]
             }
         },
+        "/auth/token-trade-in": {
+            "post": {
+                "tags": [
+                    "authTokenTradeIn"
+                ],
+                "summary": "Trade in an idToken for a token",
+                "description": "Trade in an idToken for a token",
+                "operationId": "postAuthTokenTradeIn",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "idToken": {
+                                        "description": "Id Token",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tokenTradeIn"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/docs": {
             "get": {
                 "tags": [
@@ -2443,6 +2521,17 @@
                     },
                     "identityId": {
                         "description": "The Identity Id corresponding to the client",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "tokenTradeIn": {
+                "title": "tokenTradeIn",
+                "description": "Data returned when trading in a token",
+                "properties": {
+                    "token": {
+                        "description": "Token",
                         "type": "string"
                     }
                 },

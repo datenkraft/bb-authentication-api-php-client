@@ -265,6 +265,22 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint\PostAuthRole($roleCode, $requestBody), $fetch);
     }
     /**
+     * Trade in an idToken for a token
+     *
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthTokenTradeInPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthTokenTradeInBadRequestException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthTokenTradeInUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthTokenTradeInInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\TokenTradeIn|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function postAuthTokenTradeIn(\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthTokenTradeInPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint\PostAuthTokenTradeIn($requestBody), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
