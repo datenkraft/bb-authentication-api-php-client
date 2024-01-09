@@ -332,7 +332,8 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $filter[identityId] Filter for a specific identity id to get all OAuth clients to a specific identity.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -404,7 +405,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint\PatchOAuthClient($clientId, $requestBody), $fetch);
     }
     /**
-    * Revoke an OAuth client. Be aware that this has no immediate effect on issued tokens.\
+    * Revoke an OAuth client. Be aware that this has no immediate effect on issued tokens.
     This endpoint may not be used to disenfranchisement users by revoking generated clients, since new clients
     would be created.
     *
