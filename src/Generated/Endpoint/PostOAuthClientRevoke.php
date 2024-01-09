@@ -6,7 +6,7 @@ class PostOAuthClientRevoke extends \Datenkraft\Backbone\Client\AuthenticationAp
 {
     protected $clientId;
     /**
-    * Revoke an OAuth client. Be aware that this has no immediate effect on issued tokens.\
+    * Revoke an OAuth client. Be aware that this has no immediate effect on issued tokens.
     This endpoint may not be used to disenfranchisement users by revoking generated clients, since new clients
     would be created.
     *
