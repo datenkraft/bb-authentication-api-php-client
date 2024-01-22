@@ -19,7 +19,8 @@ class PostOAuthClientUnprocessableEntityException extends UnprocessableEntityExc
 Error codes:
 - DATA_NOT_PROCESSABLE: The given data is not processable.
 - DATA_NOT_UNIQUE: The given data is not unique.
-- DATA_NOT_FOUND: The requested data could not be found.');
+- DATA_NOT_FOUND: Identity could not be found
+- OAUTH_CLIENT_REVOKED: The client has been revoked.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
