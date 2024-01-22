@@ -17,7 +17,11 @@ class PostAuthTokenTradeInUnauthorizedException extends UnauthorizedException
         parent::__construct('Unauthorized
 
 Error codes:
-- AUTHORIZATION_MISSING: No valid authentication information was given.');
+- AUTHORIZATION_MISSING: No valid authentication information was given.
+- TRADE_IN_TOKEN_NOT_PARSABLE: The given token could not be parsed.
+- TRADE_IN_TOKEN_INVALID: The given token is invalid.
+- TRADE_IN_TOKEN_EMAIL_MISSING: The given token is missing the mail address.
+- TRADE_IN_TOKEN_IDENTITY_NOT_FOUND: The mail address given in the token could not be found.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
