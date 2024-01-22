@@ -17,8 +17,9 @@ class PatchOAuthClientUnprocessableEntityException extends UnprocessableEntityEx
         parent::__construct('Unprocessable Entity
 
 Error codes:
-- DATA_NOT_UNIQUE: The given data is not unique.
-- DATA_NOT_FOUND: The requested data could not be found.');
+- DATA_NOT_FOUND: The requested data could not be found.
+- OAUTH_CLIENT_REVOKED: The client has been revoked.
+- OAUTH_CLIENT_GENERATED: Generated clients must not be patched.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
