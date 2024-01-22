@@ -1420,7 +1420,7 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized\n\nError codes:\n- AUTHORIZATION_MISSING: No valid authentication information was given.",
+                        "description": "Unauthorized\n\nError codes:\n- AUTHORIZATION_MISSING: No valid authentication information was given.\n- TRADE_IN_TOKEN_NOT_PARSABLE: The given token could not be parsed.\n- TRADE_IN_TOKEN_INVALID: The given token is invalid.\n- TRADE_IN_TOKEN_EMAIL_MISSING: The given token is missing the mail address.\n- TRADE_IN_TOKEN_IDENTITY_NOT_FOUND: The mail address given in the token could not be found.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1731,7 +1731,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nError codes:\n- DATA_NOT_PROCESSABLE: The given data is not processable.\n- DATA_NOT_UNIQUE: The given data is not unique.\n- DATA_NOT_FOUND: The requested data could not be found.",
+                        "description": "Unprocessable Entity\n\nError codes:\n- DATA_NOT_PROCESSABLE: The given data is not processable.\n- DATA_NOT_UNIQUE: The given data is not unique.\n- DATA_NOT_FOUND: Identity could not be found\n- OAUTH_CLIENT_REVOKED: The client has been revoked.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1951,7 +1951,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nError codes:\n- DATA_NOT_UNIQUE: The given data is not unique.\n- DATA_NOT_FOUND: The requested data could not be found.",
+                        "description": "Unprocessable Entity\n\nError codes:\n- DATA_NOT_FOUND: The requested data could not be found.\n- OAUTH_CLIENT_REVOKED: The client has been revoked.\n- OAUTH_CLIENT_GENERATED: Generated clients must not be patched.",
                         "content": {
                             "application/json": {
                                 "schema": {
