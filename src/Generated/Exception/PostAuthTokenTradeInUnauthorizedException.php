@@ -21,6 +21,7 @@ Error codes:
 - TRADE_IN_TOKEN_NOT_PARSABLE: The given token could not be parsed.
 - TRADE_IN_TOKEN_INVALID: The given token is invalid.
 - TRADE_IN_TOKEN_EMAIL_MISSING: The given token is missing the mail address.
+- TRADE_IN_TOKEN_IDENTITY_NOT_FOUND: The mail address given in the token could not be found.
 - TRADE_IN_TOKEN_IDENTITY_NOT_FOUND: The mail address given in the token could not be found.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
