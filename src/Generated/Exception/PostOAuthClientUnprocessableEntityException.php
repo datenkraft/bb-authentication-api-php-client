@@ -17,10 +17,9 @@ class PostOAuthClientUnprocessableEntityException extends UnprocessableEntityExc
         parent::__construct('Unprocessable Entity
 
 Error codes:
-- DATA_NOT_PROCESSABLE: The given data is not processable.
-- DATA_NOT_UNIQUE: The given data is not unique.
 - DATA_NOT_FOUND: Identity could not be found
-- OAUTH_CLIENT_REVOKED: The client has been revoked.');
+- OAUTH_CLIENT_REVOKED: The client has been revoked.
+- IDENTITY_DEACTIVATED: The identity has been deactivated.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
