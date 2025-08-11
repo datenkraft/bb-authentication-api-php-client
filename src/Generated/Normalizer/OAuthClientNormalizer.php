@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
+        return $type === \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\AuthenticationApi\\Generated\\Model\\OAuthClient';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -38,6 +34,9 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient();
+        if (\array_key_exists('revoked', $data) && \is_int($data['revoked'])) {
+            $data['revoked'] = (bool) $data['revoked'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -68,24 +67,25 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        $data['clientId'] = $object->getClientId();
-        $data['name'] = $object->getName();
-        $data['identityId'] = $object->getIdentityId();
-        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
-            $data['secret'] = $object->getSecret();
+        $dataArray = [];
+        $dataArray['clientId'] = $data->getClientId();
+        $dataArray['name'] = $data->getName();
+        $dataArray['identityId'] = $data->getIdentityId();
+        if ($data->isInitialized('secret') && null !== $data->getSecret()) {
+            $dataArray['secret'] = $data->getSecret();
         }
-        $data['revoked'] = $object->getRevoked();
-        foreach ($object as $key => $value) {
+        $dataArray['revoked'] = $data->getRevoked();
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient::class => false];
     }
 }

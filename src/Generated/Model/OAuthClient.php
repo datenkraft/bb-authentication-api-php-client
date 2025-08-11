@@ -7,8 +7,8 @@ class OAuthClient extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -47,7 +47,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return string
      */
-    public function getClientId() : string
+    public function getClientId(): string
     {
         return $this->clientId;
     }
@@ -58,7 +58,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return self
      */
-    public function setClientId(string $clientId) : self
+    public function setClientId(string $clientId): self
     {
         $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
@@ -69,7 +69,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -80,7 +80,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -91,7 +91,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return string
      */
-    public function getIdentityId() : string
+    public function getIdentityId(): string
     {
         return $this->identityId;
     }
@@ -102,7 +102,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return self
      */
-    public function setIdentityId(string $identityId) : self
+    public function setIdentityId(string $identityId): self
     {
         $this->initialized['identityId'] = true;
         $this->identityId = $identityId;
@@ -113,7 +113,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return string
      */
-    public function getSecret() : string
+    public function getSecret(): string
     {
         return $this->secret;
     }
@@ -124,7 +124,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return self
      */
-    public function setSecret(string $secret) : self
+    public function setSecret(string $secret): self
     {
         $this->initialized['secret'] = true;
         $this->secret = $secret;
@@ -135,7 +135,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return bool
      */
-    public function getRevoked() : bool
+    public function getRevoked(): bool
     {
         return $this->revoked;
     }
@@ -146,7 +146,7 @@ class OAuthClient extends \ArrayObject
      *
      * @return self
      */
-    public function setRevoked(bool $revoked) : self
+    public function setRevoked(bool $revoked): self
     {
         $this->initialized['revoked'] = true;
         $this->revoked = $revoked;

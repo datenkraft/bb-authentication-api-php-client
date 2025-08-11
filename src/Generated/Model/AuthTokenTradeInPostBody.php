@@ -7,8 +7,8 @@ class AuthTokenTradeInPostBody extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class AuthTokenTradeInPostBody extends \ArrayObject
      *
      * @return string
      */
-    public function getIdToken() : string
+    public function getIdToken(): string
     {
         return $this->idToken;
     }
@@ -34,7 +34,7 @@ class AuthTokenTradeInPostBody extends \ArrayObject
      *
      * @return self
      */
-    public function setIdToken(string $idToken) : self
+    public function setIdToken(string $idToken): self
     {
         $this->initialized['idToken'] = true;
         $this->idToken = $idToken;
