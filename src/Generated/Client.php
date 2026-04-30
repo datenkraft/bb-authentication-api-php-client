@@ -6,18 +6,18 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
 {
     /**
     * Get the audit log.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
-    *     @var string $filter[endpoint] A filter for restricting the audit log to a endpoint.
-    *     @var string $filter[version] A filter for restricting the audit log to a endpoint version.
-    *     @var mixed $filter[identifier] A filter for querying actions for a identifier.
-    * }
+    *    "filter[endpoint]"?: string, //A filter for restricting the audit log to a endpoint.
+    *    "filter[version]"?: string, //A filter for restricting the audit log to a endpoint version.
+    *    "filter[identifier]"?: mixed, //A filter for querying actions for a identifier.
+    * } $queryParameters
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuditLogCollectionBadRequestException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuditLogCollectionUnauthorizedException
@@ -25,7 +25,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuditLogCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuditLogCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuditLogCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
     */
     public function getAuditLogCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -33,8 +33,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Delete one or more role to permission assignments in this resource server
-     *
-     * @param null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource[] $requestBody 
+     * @param null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource[] $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthPermissionRoleCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthPermissionRoleCollectionUnauthorizedException
@@ -43,7 +42,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthPermissionRoleCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAuthPermissionRoleCollection(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -51,22 +50,22 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
     * Get all role to permission assignments from this resource server
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
-    * }
+    * } $queryParameters
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthPermissionRoleCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthPermissionRoleCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthPermissionRoleCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRolePaginatedCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRolePaginatedCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
     */
     public function getAuthPermissionRoleCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -74,8 +73,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Create one or more role to permission assignments in this resource server
-     *
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource[] $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource[] $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthPermissionRoleCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthPermissionRoleCollectionUnauthorizedException
@@ -85,7 +83,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthPermissionRoleCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function postAuthPermissionRoleCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -93,22 +91,22 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
     * Get all permissions from this resource server
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
-    * }
+    * } $queryParameters
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthPermissionCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthPermissionCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthPermissionCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\GetAuthPermissionCollectionResponse|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\GetAuthPermissionCollectionResponse|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
     */
     public function getAuthPermissionCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -116,8 +114,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Delete one or more role to identity assignments in this resource server
-     *
-     * @param null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityResource[] $requestBody 
+     * @param null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityResource[] $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthRoleIdentityCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnauthorizedException
@@ -126,7 +123,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthRoleIdentityCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAuthRoleIdentityCollection(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -134,22 +131,22 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
     * Get all role to identity assignments from this resource server
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
-    * }
+    * } $queryParameters
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleIdentityCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleIdentityCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleIdentityCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityPaginatedCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityPaginatedCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
     */
     public function getAuthRoleIdentityCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -157,8 +154,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Create one or more role to identity assignments in this resource server
-     *
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityResource[] $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityResource[] $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthRoleIdentityCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthRoleIdentityCollectionUnauthorizedException
@@ -168,7 +164,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthRoleIdentityCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function postAuthRoleIdentityCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -176,22 +172,22 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
     * Get all available roles from this resource server
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
-    * }
+    * } $queryParameters
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
     */
     public function getAuthRoleCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -199,7 +195,6 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Delete a role for this resource server
-     *
      * @param string $roleCode Identifier for the role
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthRoleUnauthorizedException
@@ -208,7 +203,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\DeleteAuthRoleInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAuthRole(string $roleCode, string $fetch = self::FETCH_OBJECT)
     {
@@ -216,7 +211,6 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Get a role from this resource server by its roleCode
-     *
      * @param string $roleCode Identifier for the role
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleUnauthorizedException
@@ -225,7 +219,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetAuthRoleInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleResource|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleResource|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function getAuthRole(string $roleCode, string $fetch = self::FETCH_OBJECT)
     {
@@ -233,9 +227,8 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Patch a role for this resource server
-     *
      * @param string $roleCode Identifier for the role
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewAuthRoleResource $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewAuthRoleResource $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PatchAuthRoleBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PatchAuthRoleUnauthorizedException
@@ -244,7 +237,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PatchAuthRoleInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleResource|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleResource|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function patchAuthRole(string $roleCode, \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewAuthRoleResource $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -252,9 +245,8 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Post a role for this resource server
-     *
      * @param string $roleCode Identifier for the role
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewAuthRoleResource $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewAuthRoleResource $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthRoleBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthRoleUnauthorizedException
@@ -263,7 +255,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthRoleInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleResource|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthRoleResource|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function postAuthRole(string $roleCode, \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewAuthRoleResource $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -271,15 +263,14 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Trade in an idToken for a token
-     *
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthTokenTradeInPostBody $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthTokenTradeInPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthTokenTradeInBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthTokenTradeInUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostAuthTokenTradeInInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\TokenTradeIn|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\TokenTradeIn|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function postAuthTokenTradeIn(\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\AuthTokenTradeInPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -289,7 +280,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getOpenApi(string $fetch = self::FETCH_OBJECT)
     {
@@ -297,14 +288,13 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Get the changelog in the specified format
-     *
      * @param string $format Changelog file format
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetChangelogInFormatNotFoundException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetChangelogInFormatBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getChangelogInFormat(string $format, string $fetch = self::FETCH_OBJECT)
     {
@@ -312,13 +302,12 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Get the openapi documentation in the specified format
-     *
      * @param string $format Openapi file format
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetOpenApiInFormatBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getOpenApiInFormat(string $format, string $fetch = self::FETCH_OBJECT)
     {
@@ -326,23 +315,23 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
     * Get a list of OAuth clients.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
-    *     @var string $filter[identityId] Filter for a specific identity id to get all OAuth clients to a specific identity.
-    * }
+    *    "filter[identityId]"?: string, //Filter for a specific identity id to get all OAuth clients to a specific identity.
+    * } $queryParameters
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetOAuthClientCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetOAuthClientCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetOAuthClientCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClientCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClientCollection|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
     */
     public function getOAuthClientCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -350,8 +339,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Add a new OAuth client.
-     *
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewOAuthClient $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewOAuthClient $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientUnauthorizedException
@@ -360,7 +348,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function postOAuthClient(\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\NewOAuthClient $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -368,7 +356,6 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Get the OAuth client with the given client ID.
-     *
      * @param string $clientId Client ID of the OAuth Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetOAuthClientBadRequestException
@@ -378,7 +365,7 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\GetOAuthClientInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function getOAuthClient(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
@@ -386,9 +373,8 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
     }
     /**
      * Update one or more fields of a OAuth client. Only a limited set of fields can be updated.
-     *
      * @param string $clientId OAuth client Id
-     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\UpdateOAuthClient $requestBody 
+     * @param \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\UpdateOAuthClient $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PatchOAuthClientBadRequestException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PatchOAuthClientUnauthorizedException
@@ -398,29 +384,28 @@ class Client extends \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PatchOAuthClientInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function patchOAuthClient(string $clientId, \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\UpdateOAuthClient $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint\PatchOAuthClient($clientId, $requestBody), $fetch);
     }
     /**
-    * Revoke an OAuth client. Be aware that this has no immediate effect on issued tokens.
-    This endpoint may not be used to disenfranchisement users by revoking generated clients, since new clients
-    would be created.
-    *
-    * @param string $clientId OAuth client Id
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeBadRequestException
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeForbiddenException
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeNotFoundException
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
+     * Revoke an OAuth client. Be aware that this has no immediate effect on issued tokens.
+     * This endpoint may not be used to disenfranchisement users by revoking generated clients, since new clients
+     * would be created.
+     * @param string $clientId OAuth client Id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeBadRequestException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeForbiddenException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeNotFoundException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeUnprocessableEntityException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\PostOAuthClientRevokeInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\OAuthClient|\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function postOAuthClientRevoke(string $clientId, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Endpoint\PostOAuthClientRevoke($clientId), $fetch);
