@@ -38,11 +38,12 @@ class UpdateOAuthClientNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+        elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
+            unset($data['name']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -54,10 +55,10 @@ class UpdateOAuthClientNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name')) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

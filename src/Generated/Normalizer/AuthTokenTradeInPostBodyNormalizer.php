@@ -38,7 +38,7 @@ class AuthTokenTradeInPostBodyNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('idToken', $data)) {
-            $object->setIdToken($data['idToken']);
+            $object->idToken = $data['idToken'];
             unset($data['idToken']);
         }
         foreach ($data as $key => $value) {
@@ -51,10 +51,10 @@ class AuthTokenTradeInPostBodyNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('idToken') && null !== $data->getIdToken()) {
-            $dataArray['idToken'] = $data->getIdToken();
+        if (array_key_exists('idToken', get_object_vars($data)) && null !== ($data->idToken ?? null)) {
+            $dataArray['idToken'] = $data->idToken;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

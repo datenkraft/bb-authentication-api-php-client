@@ -41,23 +41,23 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['revoked'] = (bool) $data['revoked'];
         }
         if (\array_key_exists('clientId', $data)) {
-            $object->setClientId($data['clientId']);
+            $object->clientId = $data['clientId'];
             unset($data['clientId']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('identityId', $data)) {
-            $object->setIdentityId($data['identityId']);
+            $object->identityId = $data['identityId'];
             unset($data['identityId']);
         }
         if (\array_key_exists('secret', $data)) {
-            $object->setSecret($data['secret']);
+            $object->secret = $data['secret'];
             unset($data['secret']);
         }
         if (\array_key_exists('revoked', $data)) {
-            $object->setRevoked($data['revoked']);
+            $object->revoked = $data['revoked'];
             unset($data['revoked']);
         }
         foreach ($data as $key => $value) {
@@ -70,14 +70,14 @@ class OAuthClientNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['clientId'] = $data->getClientId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['identityId'] = $data->getIdentityId();
-        if ($data->isInitialized('secret') && null !== $data->getSecret()) {
-            $dataArray['secret'] = $data->getSecret();
+        $dataArray['clientId'] = $data->clientId;
+        $dataArray['name'] = $data->name;
+        $dataArray['identityId'] = $data->identityId;
+        if (array_key_exists('secret', get_object_vars($data)) && null !== ($data->secret ?? null)) {
+            $dataArray['secret'] = $data->secret;
         }
-        $dataArray['revoked'] = $data->getRevoked();
-        foreach ($data as $key => $value) {
+        $dataArray['revoked'] = $data->revoked;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

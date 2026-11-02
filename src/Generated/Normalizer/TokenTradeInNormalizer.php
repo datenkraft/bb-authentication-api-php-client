@@ -38,7 +38,7 @@ class TokenTradeInNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('token', $data)) {
-            $object->setToken($data['token']);
+            $object->token = $data['token'];
             unset($data['token']);
         }
         foreach ($data as $key => $value) {
@@ -51,10 +51,10 @@ class TokenTradeInNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('token') && null !== $data->getToken()) {
-            $dataArray['token'] = $data->getToken();
+        if (array_key_exists('token', get_object_vars($data)) && null !== ($data->token ?? null)) {
+            $dataArray['token'] = $data->token;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }
