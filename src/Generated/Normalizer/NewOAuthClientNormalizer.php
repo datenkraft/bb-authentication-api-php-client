@@ -38,11 +38,11 @@ class NewOAuthClientNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('identityId', $data)) {
-            $object->setIdentityId($data['identityId']);
+            $object->identityId = $data['identityId'];
             unset($data['identityId']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class NewOAuthClientNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['name'] = $data->getName();
-        $dataArray['identityId'] = $data->getIdentityId();
-        foreach ($data as $key => $value) {
+        $dataArray['name'] = $data->name;
+        $dataArray['identityId'] = $data->identityId;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

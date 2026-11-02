@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model;
 
-class TokenTradeIn extends \ArrayObject
+use Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\AdditionalPropertiesInterface;
+class TokenTradeIn implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Token
      *
      * @var string
      */
-    protected $token;
-    /**
-     * Token
-     *
-     * @return string
-     */
-    public function getToken(): string
+    public string $token;
+    public function definedProperties(): array
     {
-        return $this->token;
-    }
-    /**
-     * Token
-     *
-     * @param string $token
-     *
-     * @return self
-     */
-    public function setToken(string $token): self
-    {
-        $this->initialized['token'] = true;
-        $this->token = $token;
-        return $this;
+        return ['token' => 'token'];
     }
 }

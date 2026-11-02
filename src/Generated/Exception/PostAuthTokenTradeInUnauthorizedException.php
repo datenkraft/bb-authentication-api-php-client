@@ -4,15 +4,16 @@ namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Exception;
 
 class PostAuthTokenTradeInUnauthorizedException extends UnauthorizedException
 {
-    /**
-     * @var \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse
-     */
-    private $errorResponse;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse
+         */
+        private readonly \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse $errorResponse,
+        /**
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
+         */
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
+    )
     {
         parent::__construct('Unauthorized
 
@@ -23,14 +24,12 @@ Error codes:
 - TRADE_IN_TOKEN_EMAIL_MISSING: The given token is missing the mail address.
 - TRADE_IN_TOKEN_IDENTITY_NOT_FOUND: The mail address given in the token could not be found.
 - TRADE_IN_TOKEN_IDENTITY_NOT_FOUND: The mail address given in the token could not be found.');
-        $this->errorResponse = $errorResponse;
-        $this->response = $response;
     }
     public function getErrorResponse(): \Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model\ErrorResponse
     {
         return $this->errorResponse;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

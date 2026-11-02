@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\AuthenticationApi\Generated\Model;
 
-class AuthTokenTradeInPostBody extends \ArrayObject
+use Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\AuthenticationApi\Generated\Runtime\AdditionalPropertiesInterface;
+class AuthTokenTradeInPostBody implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Id Token
      *
      * @var string
      */
-    protected $idToken;
-    /**
-     * Id Token
-     *
-     * @return string
-     */
-    public function getIdToken(): string
+    public string $idToken;
+    public function definedProperties(): array
     {
-        return $this->idToken;
-    }
-    /**
-     * Id Token
-     *
-     * @param string $idToken
-     *
-     * @return self
-     */
-    public function setIdToken(string $idToken): self
-    {
-        $this->initialized['idToken'] = true;
-        $this->idToken = $idToken;
-        return $this;
+        return ['idToken' => 'idToken'];
     }
 }
